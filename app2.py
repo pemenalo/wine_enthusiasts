@@ -1,4 +1,4 @@
-from crypt import methods
+#from crypt import methods
 from flask import Flask,render_template,request
 import tensorflow as tf
 # import keras
@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return render_template("index.html")
+    return render_template("index_1.html")
 
 # @app.route("/sub", methods=['POST'])
 @app.route("/sub", methods=['GET','POST'])
