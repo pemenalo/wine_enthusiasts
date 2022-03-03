@@ -22,7 +22,8 @@
         </p>
     </div>
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-6">
+            <p>Enter the features:</p>
             <form action="/sub" method="POST">
                 <div class="form-group">
                     <label for="fixed acidity">Fixed Acidity</label>
@@ -73,8 +74,9 @@
               </form>
             
         </div>
-        <div class="col-sm-8">
-            <img src="assets/wines2.jpg" class="img-fluid">
+        <div class="col-sm-6">
+            <!-- <img src = "/templates/images/wine_1.jpeg" class = "img-responsive" width = "50%" /> -->
+            <img src="{{url_for('static', filename='wine_1.jpeg')}}"  />
         </div>
     </div>
     
