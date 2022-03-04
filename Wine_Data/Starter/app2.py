@@ -64,7 +64,7 @@ def submit():
 
 	# #load trained model
 
-			model = load_model('Wine_Enthusiast_Optimization_r.h5')
+			model = load_model('Wine_Enthusiast_Optimization_r_2.h5')
 			print("Model Loaded")
 			test_data = preprocess_input(test_data, mode='tf')
 	# predict
@@ -121,8 +121,9 @@ def submit_white():
 			print(test_data)
 
 	# #load trained model
-
-			model = load_model('Wine_Enthusiast_Optimization_w.h5')
+			print('I am in white logic')
+			model = load_model('Wine_Enthusiast_Optimization_r_2.h5')
+			
 			print("Model Loaded")
 			test_data = preprocess_input(test_data, mode='tf')
 	# predict
