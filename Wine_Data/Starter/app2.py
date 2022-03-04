@@ -70,7 +70,9 @@ def submit():
 	# predict
 
 			prediction = model.predict(test_data)
+			prediction = str(prediction).lstrip('[').rstrip(']')
 			print(f"Prediction Value: {prediction}")
+
 
 			# ----
 
@@ -129,6 +131,7 @@ def submit_white():
 	# predict
 
 			prediction = model.predict(test_data)
+			prediction = str(prediction).lstrip('[').rstrip(']')
 			print(f"Prediction Value: {prediction}")
 
 			# ----
