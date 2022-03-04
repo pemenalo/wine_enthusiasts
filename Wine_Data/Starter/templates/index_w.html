@@ -16,10 +16,13 @@
         <h1 class="display-4">Cheers Wine Enthusiast!</h1>
         <p class="lead">This is a project dedicated to all wine drinkers who want to examine their wine quality based on wine defining chemical characteristics.</p>
         <hr class="my-4">
-        <p>We will determine quality of wine based on following characteristics: fixed acidity,volatile acidity, citric acid, residual sugar, chlorides, free sulfure dioxide, total sulfur dioxide, density, pH, sulphates, alcohol, and quality determination.</p>
+        <p>White Wine Analysis.</p>
+        <p>We will determine the quality of wine based on the following characteristics: Fixed acidity, Volatile acidity, Citric acid, Residual sugar, Chlorides, Free sulfure dioxide, Total sulfur dioxide, Density, pH, Sulphates, Alcohol, and quality determination.</p>
+        
         <p class="lead">
-          <a class="btn btn-primary btn-lg" href="#" role="button">White Wine</a>
+          <a class="btn btn-primary btn-lg"  role="button" onclick="history.back()">Click here for Red Wine prediction!</a>
         </p>
+        
     </div>
     <div class="row">
         <div class="col-sm-4">
@@ -75,8 +78,8 @@
             
         </div>
         <div class="col-sm-8">
-            <!-- <img src = "/templates/images/wine_1.jpeg" class = "img-responsive" width = "50%" /> -->
-            <img src="{{url_for('static', filename='wine1.jpg')}}"  />
+             <!-- <img src = "/templates/images/wine_1.jpeg" class = "img-responsive" width = "50%" /> -->
+             <img src="{{url_for('static', filename='wine1.jpg')}}" class = "img-responsive" width = "50%" />
         </div>
     </div>
     

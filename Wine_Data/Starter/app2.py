@@ -18,15 +18,19 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def hello():
-	return render_template("index_1.html")
+def red_calc():
+	return render_template("index_r.html")
 
 # @app.route("/sub", methods=['POST'])
+@app.route("/white/")
+def white_calc():
+	return render_template("index_w.html")
+
 
 
 @app.route("/sub", methods=['GET', 'POST'])
 def submit():
-	return("Working!")
+	#return("Working!")
 	# HTML to Python file
 	if request.method == "POST":
 		acidity = float(request.form.get("fixed acidity"))
@@ -71,13 +75,71 @@ def submit():
 			# ----
 
 		 # .py to HTML
-			# return render_template("submit.html",n=name,prediction = prediction)
+			return render_template("submit.html",prediction = prediction)
 
 		except ValueError:
 			return "Please Enter valid values"
 
 	else:
-		return render_template('index_1.html')
+		return render_template('index_r.html')
+
+
+# White Wine Analysis
+
+@app.route("/sub_w/", methods=['GET', 'POST'])
+def submit_white():
+	#return("Working!")
+	# HTML to Python file
+	if request.method == "POST":
+		acidity = float(request.form.get("fixed acidity"))
+		volacidity = float(request.form.get("volatile acidity"))
+		citric = float(request.form.get("citric acid"))
+		res_sugar = float(request.form.get("residual sugar"))
+		chlorides = float(request.form.get("chlorides"))
+		so2 = float(request.form.get("free sulfure dioxide"))
+		tso2 = float(request.form.get("total sulfur dioxide"))
+		density = float(request.form.get("density"))
+		pH = float(request.form.get("pH"))
+		sulphates = float(request.form.get("sulphates"))
+		alcohol = float(request.form.get("alcohol"))
+
+		# call preprocessDataAndPredict and pass inputs
+		try:
+			# prediction = preprocessDataAndPredict(acidity, volacidity, citric, res_sugar, chlorides, so2,tso2,density, pH,sulphates,alcohol)
+			# ----
+
+			# keep all inputs in array
+			test_data = [acidity, volacidity, citric, res_sugar,
+				chlorides, so2, tso2, density, pH, sulphates, alcohol]
+			print(test_data)
+
+	# convert value data into numpy array
+			test_data = np.array(test_data)
+
+	# reshape array
+			test_data = test_data.reshape(1, -1)
+			print(test_data)
+
+	# #load trained model
+
+			model = load_model('Wine_Enthusiast_Optimization_w.h5')
+			print("Model Loaded")
+			test_data = preprocess_input(test_data, mode='tf')
+	# predict
+
+			prediction = model.predict(test_data)
+			print(f"Prediction Value: {prediction}")
+
+			# ----
+
+		 # .py to HTML
+			return render_template("submit_w.html",prediction = prediction)
+
+		except ValueError:
+			return "Please Enter valid values"
+
+	else:
+		return render_template('index_w.html')
 			
 # def preprocessDataAndPredict(acidity, volacidity, citric, res_sugar, chlorides, so2,tso2,density, pH,sulphates,alcohol):
 	
