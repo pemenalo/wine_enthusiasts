@@ -58,7 +58,7 @@ body {
 .button:hover {
   background: #06d85f;
 }
-
+/* 
 .overlay {
   position: fixed;
   top: 0;
@@ -115,4 +115,4 @@ body {
   .popup {
     width: 70%;
   }
-}
+} */
