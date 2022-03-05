@@ -25,7 +25,7 @@ def prediction(acidity, volacidity, citric, res_sugar,
 
     # model = load_model('Wine_Enthusiast_Optimization_r_2.h5')
     model = load('Wine_Enthusiast_RF_r.joblib')
-    scaler = load('/Users/alexanderlorin/code/wine_enthusiasts/Wine_Data/scaler_RF_r.joblib')
+    scaler = load('scaler_RF_r.joblib')
     print("Model Loaded")
     # test_data = preprocess_input(test_data, mode='tf')
 # predict    
