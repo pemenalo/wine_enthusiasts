@@ -13,6 +13,8 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.models import Model
 from tensorflow.keras.models import load_model
 import numpy as np
+from joblib import dump, load
+from sklearn.ensemble import RandomForestClassifier
 
 app = Flask(__name__)
 
@@ -56,22 +58,27 @@ def submit():
 			print(test_data)
 
 	# convert value data into numpy array
-			test_data = np.array(test_data)
+			# test_data = np.array(test_data)
 
 	# reshape array
-			test_data = test_data.reshape(1, -1)
+			# test_data = test_data.reshape(1, -1)
 			print(test_data)
 
 	# #load trained model
 
-			model = load_model('Wine_Enthusiast_Optimization_r_2.h5')
+			# model = load_model('Wine_Enthusiast_Optimization_r_2.h5')
+			model = load('Wine_Enthusiast_RF_r.joblib')
 			print("Model Loaded")
-			test_data = preprocess_input(test_data, mode='tf')
+			# test_data = preprocess_input(test_data, mode='tf')
 	# predict
-
-			prediction = model.predict(test_data)
+			from sklearn.preprocessing import StandardScaler
+			scaler = StandardScaler()
+			
+			prediction = model.predict(scaler.transform([test_data]))
+			# scaler.transform([clean_df_r.iloc[3,0:11].to_list()])
 			prediction = str(prediction).lstrip('[').rstrip(']')
 			print(f"Prediction Value: {prediction}")
+			print(scaler.transform(test_data))
 
 
 			# ----
@@ -81,6 +88,7 @@ def submit():
 
 		except ValueError:
 			return "Please Enter valid values"
+			
 
 	else:
 		return render_template('index_r.html')
